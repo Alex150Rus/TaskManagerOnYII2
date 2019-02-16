@@ -2,31 +2,27 @@
 
 namespace app\models;
 
-class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
+use app\models\tables\Users;
+
+class UserIdentity extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
     public $id;
     public $username;
     public $password;
+    public $email;
     public $authKey;
     public $accessToken;
-
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ]
-    ];
-
 
     /**
      * {@inheritdoc}
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        if ($user = Users::findOne($id)) {
+            $user->setScenario('auth');
+            return new static ($user-> toArray());
+        }
+        return null;
     }
 
     /**
@@ -51,12 +47,10 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
+        if ($user = Users::findOne(['login' => $username])) {
+          $user->setScenario('auth');
+          return new static ($user-> toArray());
         }
-
         return null;
     }
 
