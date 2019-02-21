@@ -1,1 +1,0 @@
-<h1 style="color: red; font-weight: 700; text-align: center"><?=$date?></h1>
