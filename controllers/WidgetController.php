@@ -9,7 +9,17 @@
 namespace app\controllers;
 
 
-class WidgetController
-{
+use app\models\tables\Test;
+use yii\web\Controller;
 
+class WidgetController extends Controller
+{
+  public function actionIndex(){
+
+    $model = new Test([
+      'title' => 'Тестовая табличка',
+      'content' => 'изучаем Yii',
+    ]);
+    return $this->render('index',['model' => $model]);
+  }
 }

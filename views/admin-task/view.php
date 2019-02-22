@@ -34,7 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'date',
             'description:ntext',
             'responsible_id',
-            'creator_id',
+            [
+              'label' => 'status',
+              'value' => $model->status->name
+            ],
             'deadline',
             'status_id',
         ],

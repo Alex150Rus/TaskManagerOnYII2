@@ -9,7 +9,21 @@
 namespace app\widgets;
 
 
-class MyWidget
-{
+use yii\base\Widget;
 
+class MyWidget extends Widget
+{
+  public $message = 'world';
+
+  public function init()
+  {
+    //здесь открывается, а в шаблоне закрывается
+    echo "<div class='my'>";
+  }
+
+
+  public function run()
+  {
+    return $this->render('my', ['message' => $this->message]);
+  }
 }

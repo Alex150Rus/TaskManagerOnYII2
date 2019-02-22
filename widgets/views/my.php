@@ -1,7 +1,2 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Alex1
- * Date: 22.02.2019
- * Time: 3:12
- */
+
+<h1>Hello, <?=$message?></h1>
