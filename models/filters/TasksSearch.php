@@ -5,6 +5,7 @@ namespace app\models\filters;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\tables\Tasks;
+use yii\data\Pagination;
 
 /**
  * TasksSearch represents the model behind the search form of `app\models\tables\Tasks`.
@@ -46,6 +47,9 @@ class TasksSearch extends Tasks
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+              'pageSize' => 2
+            ]
         ]);
 
         $this->load($params);

@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Tasks', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?= /*GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -36,5 +36,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);*/
+    \yii\widgets\ListView::widget([
+      'dataProvider' => $dataProvider,
+      'itemView' => 'view',
+      'viewParams' => [
+        'hide' => true,
+        ]
+
+    ]);
+    ?>
 </div>
