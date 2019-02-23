@@ -17,6 +17,7 @@ use Yii;
  * @property int $status_id
  *
  * @property TasksStatuses $status
+ * @property Users $users
  */
 class Tasks extends \yii\db\ActiveRecord
 {
@@ -65,6 +66,16 @@ class Tasks extends \yii\db\ActiveRecord
      */
     public function getStatus()
     {
-        return $this->hasOne(TasksStatuses::className(), ['id' => 'status_id']);
+        return $this->hasOne(TasksStatuses::class, ['id' => 'status_id']);
+    }
+
+    public function getUsers()
+    {
+      return $this->hasOne(Users::class, ['id' => 'responsible_id']);
+    }
+
+    public function getCreator()
+    {
+      return $this->hasOne(Users::class, ['id' => 'creator_id']);
     }
 }

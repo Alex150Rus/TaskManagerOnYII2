@@ -4,6 +4,8 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\tables\Tasks */
+/* @var $modelUsers app\models\tables\Users */
+/* @var $modelStatuses app\models\tables\TasksStatuses */
 
 $this->title = 'Update Tasks: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Tasks', 'url' => ['index']];
@@ -16,6 +18,8 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'modelStatuses' => $modelStatuses,
+        'modelUsers' => $modelUsers,
     ]) ?>
 
 </div>
